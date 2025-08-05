@@ -16,7 +16,7 @@ namespace InheritanceAndOverriding
     {
         public override void MakeSound()
         {
-            Console.WriteLine("woof woof");
+            Console.WriteLine("Woof");
         }
     }
 
@@ -41,7 +41,7 @@ namespace InheritanceAndOverriding
             myAnimal.MakeSound();   // Outputs: Some generic sound
 
             Console.WriteLine("Dog sound:");
-            myDog.MakeSound();      // Outputs: woof
+            myDog.MakeSound();      // Outputs: Woof
 
             Console.WriteLine("Cat sound:");
             myCat.MakeSound();      // Outputs: Meow
