@@ -1,50 +1,56 @@
 using System;
 
-namespace InheritanceAndOverriding
+namespace AbstractClasses
 {
-    // Base class
-    public class Animal
+    // Abstract class
+    public abstract class Shape
     {
-        public virtual void MakeSound()
+        public abstract double GetArea();
+    }
+
+    // Circle class
+    public class Circle : Shape
+    {
+        public double Radius { get; set; }
+
+        public Circle(double radius)
         {
-            Console.WriteLine("Some generic sound");
+            Radius = radius;
+        }
+
+        public override double GetArea()
+        {
+            return Math.PI * Radius * Radius;
         }
     }
 
-    // Derived class: Dog
-    public class Dog : Animal
+    // Rectangle class
+    public class Rectangle : Shape
     {
-        public override void MakeSound()
+        public double Width { get; set; }
+        public double Height { get; set; }
+
+        public Rectangle(double width, double height)
         {
-            Console.WriteLine("Woof");
+            Width = width;
+            Height = height;
+        }
+
+        public override double GetArea()
+        {
+            return Width * Height;
         }
     }
 
-    // Derived class: Cat
-    public class Cat : Animal
-    {
-        public override void MakeSound()
-        {
-            Console.WriteLine("Meow");
-        }
-    }
-
-    class AnimalTest
+    class Program
     {
         static void Main(string[] args)
         {
-            Animal myAnimal = new Animal();
-            Animal myDog = new Dog();
-            Animal myCat = new Cat();
+            Shape circle = new Circle(5.0);
+            Shape rectangle = new Rectangle(4.0, 6.0);
 
-            Console.WriteLine("Animal sound:");
-            myAnimal.MakeSound();   // Outputs: Some generic sound
-
-            Console.WriteLine("Dog sound:");
-            myDog.MakeSound();      // Outputs: Woof
-
-            Console.WriteLine("Cat sound:");
-            myCat.MakeSound();      // Outputs: Meow
+            Console.WriteLine("Area of Circle: " + circle.GetArea());       // Outputs: 78.54...
+            Console.WriteLine("Area of Rectangle: " + rectangle.GetArea()); // Outputs: 24
         }
     }
 }
