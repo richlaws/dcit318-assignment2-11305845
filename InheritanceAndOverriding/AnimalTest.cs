@@ -1,44 +1,31 @@
 using System;
 
-namespace AbstractClasses
+namespace InheritanceAndOverriding
 {
-    // Abstract class
-    public abstract class Shape
+    // Base class
+    public class Animal
     {
-        public abstract double GetArea();
-    }
-
-    // Circle class
-    public class Circle : Shape
-    {
-        public double Radius { get; set; }
-
-        public Circle(double radius)
+        public virtual void MakeSound()
         {
-            Radius = radius;
-        }
-
-        public override double GetArea()
-        {
-            return Math.PI * Radius * Radius;
+            Console.WriteLine("Some generic sound");
         }
     }
 
-    // Rectangle class
-    public class Rectangle : Shape
+    // Derived class: Dog
+    public class Dog : Animal
     {
-        public double Width { get; set; }
-        public double Height { get; set; }
-
-        public Rectangle(double width, double height)
+        public override void MakeSound()
         {
-            Width = width;
-            Height = height;
+            Console.WriteLine("Bark");
         }
+    }
 
-        public override double GetArea()
+    // Derived class: Cat
+    public class Cat : Animal
+    {
+        public override void MakeSound()
         {
-            return Width * Height;
+            Console.WriteLine("Meow");
         }
     }
 
@@ -46,11 +33,18 @@ namespace AbstractClasses
     {
         static void Main(string[] args)
         {
-            Shape circle = new Circle(5.0);
-            Shape rectangle = new Rectangle(4.0, 6.0);
+            Animal myAnimal = new Animal();
+            Animal myDog = new Dog();
+            Animal myCat = new Cat();
 
-            Console.WriteLine("Area of Circle: " + circle.GetArea());       // Outputs: 78.54...
-            Console.WriteLine("Area of Rectangle: " + rectangle.GetArea()); // Outputs: 24
+            Console.WriteLine("Animal sound:");
+            myAnimal.MakeSound();   // Outputs: Some generic sound
+
+            Console.WriteLine("Dog sound:");
+            myDog.MakeSound();      // Outputs: Bark
+
+            Console.WriteLine("Cat sound:");
+            myCat.MakeSound();      // Outputs: Meow
         }
     }
 }
